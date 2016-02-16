@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="#000000"
+    android:textColor="#FFF"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/activity_main" tools:context=".MainActivity">
+
+    <TextView android:text="Welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/header"
+        android:textColor="#e1e0ff"
+        android:textSize="30dp"
+        android:textAlignment="center"
+        android:background="#000"/>
+
+<!--
+    <ImageView
+        android:layout_width="10dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:id="@+id/imageView"
+        android:src="@drawable/outdoor"
+        android:layout_below="@+id/apikey"
+        android:scaleType="fitXY"
+        />
+    <TextView android:text="Temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/temp"
+        android:textColor="#FFF"
+        android:background="#000"
+        android:layout_below="@+id/apikey"
+        />
+-->
+
+    <ImageView
+        android:id="@+id/flag"
+        android:layout_width="350dp"
+        android:layout_height="150dp"
+        android:scaleType="fitXY"
+        android:layout_below="@+id/header"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/outdoor_color"
+        />
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentTop="true"
+        android:layout_below="@id/header"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/tempTable"
+        >
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/temp"
+                android:text="Temp"
+                android:textSize="25sp"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_marginTop="105dp"
+                android:layout_marginLeft="140dp"
+                android:textColor="#c6ffc9"
+                />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/humidity"
+                android:textSize="25dp"
+                android:text="Hum"
+                android:textColor="#FFF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="100dp"
+                />
+            <TextView
+                android:id="@+id/pressure"
+                android:text="Pres"
+                android:textSize="25dp"
+                android:textColor="#FFF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="1dp"
+                />
+
+        </TableRow>
+    </TableLayout>
+    <ImageView
+        android:id="@+id/washerimg"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleType="fitXY"
+        android:layout_below="@+id/tempTable"
+        android:src="@drawable/washer"
+        />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="28dp"
+        android:id="@+id/washerinfo"
+        android:textSize="25sp"
+        android:text="Washerinfo"
+        android:textColor="#FFF"
+        android:layout_below="@id/tempTable"
+        android:layout_toEndOf="@id/washerimg"
+        android:layout_toRightOf="@id/washerimg"
+        android:layout_marginLeft="10dp"
+        />
+
+    <AnalogClock
+        android:id="@+id/analog_clock"
+        android:layout_width="350dp"
+        android:layout_height="160dp"
+        android:layout_below="@id/washerimg"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView android:text="Inkommande samtal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14dp"
+        android:id="@+id/cheader"
+        android:textColor="#FFF"
+        android:background="#000"
+        android:layout_below="@+id/analog_clock"
+        />
+
+    <TextView android:text="Vänta..."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="22dp"
+        android:id="@+id/calls"
+        android:textColor="#FFF"
+        android:background="#000"
+        android:layout_below="@+id/cheader"
+        />
+    <EditText
+        android:id="@+id/apikey"
+        android:text="8133697b1b562f52689bd680b330cb4d"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:hint="@string/apiedittext"
+        android:onClick="apikeyClicked"
+        android:padding="5dp"
+        android:textSize="14sp"
+        android:layout_below="@+id/calls"
+        android:textColor="#FFF">
+    </EditText>
+    <Button
+        android:id="@+id/emoncms"
+        android:layout_width="150dp"
+        android:layout_height="35dp"
+        android:layout_below="@id/apikey"
+        android:text="Find api key"
+        android:onClick="emoncmsClicked"
+        android:clickable="true" />
+    <Button
+        android:id="@+id/save"
+        android:layout_width="150dp"
+        android:layout_height="35dp"
+        android:text="Save"
+        android:onClick="saveapikeyClicked"
+        android:clickable="true"
+        android:layout_below="@id/apikey"
+        android:layout_toEndOf="@id/emoncms"
+        android:layout_toRightOf="@id/emoncms"
+        />
+
+
+    <TextView android:text="Uppdaterad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12dp"
+        android:id="@+id/updated"
+        android:textColor="#FFF"
+        android:background="#000"
+        android:layout_below="@+id/save"
+        />
+
+</RelativeLayout>

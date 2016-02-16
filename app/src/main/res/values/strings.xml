@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">NoKendo</string>
+    <string name="action_settings">Settings</string>
+    <string name="apiedittext">Api key (click to edit, long-click to paste from clipboard)</string>
+</resources>
