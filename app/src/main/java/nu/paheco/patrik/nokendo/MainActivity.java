@@ -32,6 +32,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -77,7 +78,7 @@ public class MainActivity extends Activity {
         final TextView temp=(TextView)findViewById(R.id.temp);
         final TextView humidity=(TextView)findViewById(R.id.humidity);
         final TextView pressure=(TextView)findViewById(R.id.pressure);
-        final TextView updated=(TextView)findViewById(R.id.updated);
+        //final TextView updated=(TextView)findViewById(R.id.updated);
         final TextView washerinfo=(TextView)findViewById(R.id.washerinfo);
 
 
@@ -178,6 +179,12 @@ public class MainActivity extends Activity {
                                         Log.d("Data", name + ": " + value);
 
                                         if(name.equals("Temp")) {
+                                            // Round value
+                                            DecimalFormat twoDForm = new DecimalFormat("#.#");
+                                            Float fvalue = Float.valueOf(value)*10;
+                                            Integer ivalue = fvalue.intValue()*10;
+                                            ivalue=ivalue/100;
+                                            Log.d ("suck", ivalue.toString());
                                             Long tsLong = System.currentTimeMillis()/1000;
                                             Long diff = tsLong-Long.valueOf(time);
                                             Log.d ("Age", String.valueOf(diff));
@@ -186,8 +193,8 @@ public class MainActivity extends Activity {
                                                 temp.setTextColor(Color.RED);
                                             }
 
-                                            temp.setText(value + "C");
-                                            updated.setText("Uppdaterad "+realtime);
+                                            temp.setText(ivalue.toString() + "C");
+                                            //updated.setText("Uppdaterad "+realtime);
 
                                         }
                                         if(name.equals("Humidity")) {
